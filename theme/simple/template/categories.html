@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{.SiteLang}}">
+
+{{template "header" .}}
+
+<body>
+
+{{template "navi" .}}
+
+<section class="section">
+
+    <div class="container">
+        <h1 class="title">All Categories</h1>
+        <hr class="subtitle">
+    </div>
+
+    <div class="container">
+
+        <div class="tags are-medium">
+
+            {{range $i, $e := .Categories}}
+                <span class="tag is-light" data-category="{{$i}}" onclick="
+                     var c='category-'+this.dataset.category;
+                     var el=document.getElementsByClassName('article-category');
+                     for (var i=0;i<el.length;i++){
+                         if (c == el[i].id){
+                             document.getElementById(c).classList.toggle('is-hidden');
+                         } else {
+                             el[i].classList.add('is-hidden');
+                         }
+                     }
+                     ">
+                    <a>{{$i}}</a>
+                </span>
+            {{end}}
+
+        </div>
+
+        {{range $i, $e := .Categories}}
+            <div class="container is-hidden article-category" id="category-{{$i}}">
+
+                {{range $e}}
+                    <article class="media">
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <a href="./archive/{{.Slug}}/">{{.Title}}  </a>
+                                    <time class="is-pulled-right" pubdate="pubdate" datetime="{{.DateSEO}}">{{.Date}}</time>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                {{end}}
+
+            </div>
+        {{end}}
+
+    </div>
+</section>
+
+{{template "footer" .}}
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let hash = decodeURIComponent(window.location.hash.substring(1));
+        let showEl;
+
+        if (hash != ''){
+            showEl = document.getElementById(hash);
+        } else {
+            showEl = document.getElementsByClassName('article-category')[0];
+        }
+        showEl.classList.remove('is-hidden');
+    });
+</script>
+
+</html>

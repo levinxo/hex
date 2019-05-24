@@ -1,0 +1,32 @@
+静态文件(css)地址问题
+
+
+
+一些配置：
+SITEURL = 'http://localhost:8000'
+SITEURL = 'https://www.bicky.me/blog'
+
+THEME = 'simple'
+
+ARTICLE_URL = 'archive/{slug}/'
+ARTICLE_SAVE_AS = 'archive/{slug}/index.html'
+
+DIRECT_TEMPLATES = (('index', 'tags', 'categories', 'archives', 'search', '404'))
+
+SITEMAP = {
+    "priorities": {
+        "indexes": 0.5,
+        "pages": 0.5,
+        "articles": 0.5,
+    },
+    "changefreqs": {
+        "indexes": "daily",
+        "pages": "monthly",
+        "articles": "monthly",
+    }
+}
+
+STATIC_PATH = {
+    #'static/robots.txt': {'path': 'robots.txt'},
+}
+

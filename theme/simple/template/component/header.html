@@ -1,0 +1,37 @@
+{{define "header"}}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{if .Meta.Author}}<meta name="author" content="{{.Meta.Author}}" />{{end}}
+    {{if .Meta.Keywords}}<meta name="keywords" content="{{.Meta.Keywords}}" />{{end}}
+
+    {{if .Meta.OgType}}<meta property="og:type" content="{{.Meta.OgType}}" />{{end}}
+    {{if .Meta.PageTitle}}<meta property="og:title" content="{{.Meta.PageTitle}}"/>{{end}}
+    {{if .Meta.OgUrl}}<meta property="og:url" content="{{.Meta.OgUrl}}" />{{end}}
+    {{if .Meta.Description}}<meta property="og:description" content="{{.Meta.Description}}" />{{end}}
+    {{if .SiteName}}<meta property="og:site_name" content="{{.SiteName}}" />{{end}}
+    {{if .Meta.Author}}<meta property="og:article:author" content="{{.Meta.Author}}" />{{end}}
+
+    {{if .Meta.TwCard}}<meta name="twitter:card" content="{{.Meta.TwCard}}">{{end}}
+    {{if .Meta.PageTitle}}<meta name="twitter:title" content="{{.Meta.PageTitle}}">{{end}}
+    {{if .Meta.Description}}<meta name="twitter:description" content="{{.Meta.Description}}">{{end}}
+
+    {{if .Meta.PageTitle}}<title>{{.Meta.PageTitle}}</title>{{end}}
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/bulma-0.7.4.min.css" media="screen">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{.GoogleAnalytics}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{.GoogleAnalytics}}');
+    </script>
+
+</head>
+
+{{end}}

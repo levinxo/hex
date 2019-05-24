@@ -1,0 +1,13 @@
+site_name: BICKY.ME
+site_lang: zh-CN
+author: Levin
+time_location: Asia/Hong_Kong
+project_dir: ~/work/go/src/hex
+content_dir: ~/work/blog/content
+output_dir: ~/work/blog/output
+publish_site_url: https://www.bicky.me/blog
+article_url : archive
+theme_name : simple
+google_analytics : UA-42652171-1
+disqus_site_name : levinxo
+swift_type_install_code: 1DGFWGWhxJy9xkmoseb7

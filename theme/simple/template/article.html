@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="{{.SiteLang}}">
+
+{{template "header" .}}
+
+<body>
+
+{{template "navi" .}}
+
+<section class="section">
+    <div class="container">
+        <h1 class="title"><a href="../../archive/{{.CurrentArticle.Slug}}/"> {{.CurrentArticle.Title}}  </a></h1>
+        <hr class="subtitle">
+    </div>
+    <div class="container">
+
+        <div class="tile is-vertical is-ancestor">
+            <div class="tile is-parent">
+                <div class="tile is-10 is-child box">
+                    {{if .CurrentArticle.OutdatedNotice}}
+                        <div class="notification is-warning">
+                        <button class="delete" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"></button>
+                        本文最后更新于 {{.CurrentArticle.Days}} 天前，文中的信息可能已经有所发展或发生改变。
+                        </div>
+                    {{end}}
+                    <div class="content">
+                        <!--content here-->
+                        {{.CurrentArticle.ContentHTML}}
+                    </div>
+                </div>
+                <div class="tile is-child box">
+
+                    <p class="is-size-6 is-italic has-text-grey">Published</p>
+                    <time class="" pubdate="pubdate" datetime="{{.CurrentArticle.DateSEO}}">{{.CurrentArticle.Date}}</time>
+
+                    {{if .CurrentArticle.Modified}}
+                    <p class="is-size-6 is-italic has-text-grey">Last Updated</p>
+                    <time class="" pubdate="pubdate" datetime="{{.CurrentArticle.ModifiedSEO}}">{{.CurrentArticle.Modified}}</time>
+                    {{end}}
+
+                    <p class="is-size-6 is-italic has-text-grey">Author</p>
+                    <p class="">{{.CurrentArticle.Author}}</p>
+
+                    <p class="is-size-6 is-italic has-text-grey">Category</p>
+                    <a class="" href="../../categories.html#category-{{.CurrentArticle.Category}}">{{.CurrentArticle.Category}}</a>
+
+                    {{if .CurrentArticle.TagSlice }}
+                        <p class="is-size-6 is-italic has-text-grey">Tags</p>
+                        {{range $i,$e := .CurrentArticle.TagSlice}}
+                            <span class="tag is-light">{{$e}}</span>
+                        {{end}}
+                    {{end}}
+
+                </div>
+            </div>
+            <div class="tile is-parent">
+                <div class="tile is-child box">
+
+                    <!--comment here-->
+                    <div id="disqus_thread">Disqus loading now...</div>
+                    <script>
+
+                        /**
+                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                        var disqus_config = function () {
+                        this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = '{{.CurrentArticle.DisqusIdentifier}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                        };
+
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://{{.DisqusSiteName}}.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{template "footer" .}}
+
+</body>
+</html>

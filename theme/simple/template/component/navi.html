@@ -1,0 +1,59 @@
+{{define "navi"}}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+
+        <!--
+        <a class="navbar-item" href="/">
+            <img src="" width="112" height="28">
+        </a>
+        -->
+
+        <a class="navbar-item is-size-4" href="/">
+            {{.SiteName}}
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic"
+           onclick="this.classList.toggle('is-active');document.getElementById(this.dataset.target).classList.toggle('is-active');">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasic" class="navbar-menu">
+        <div class="navbar-start">
+
+            {{if .SwiftypeInstallCode}}
+                <style type="text/css">
+                    .st-default-search-input, .st-ui-search-input {
+                        display: inline-block;width: 190px;height: 16px;padding: 7px 11px 7px 11px;border: 1px solid #bbb;
+                        border: 1px solid rgba(0,0,0,0.25);font-weight: 400;color: #3B454F;font-size: 14px;line-height: 16px;
+                        -webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;-moz-background-clip: padding-box;
+                        background-clip: padding-box;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+                        -webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;background-image: none;
+                        font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
+                    }
+                </style>
+            <div class="navbar-item">
+                <input type="text" class="st-default-search-input" />
+            </div>
+            {{end}}
+
+        </div>
+
+        <div class="navbar-end">
+            <a class="navbar-item" href="/">
+                Home
+            </a>
+            <a class="navbar-item" href="/categories.html">
+                Categories
+            </a>
+            <a class="navbar-item" href="/archives.html">
+                Archives
+            </a>
+        </div>
+    </div>
+</nav>
+
+{{end}}

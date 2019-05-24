@@ -1,0 +1,26 @@
+{{define "footer"}}
+
+<footer class="footer has-background-white-bis">
+    <div class="content has-text-centered">
+        <p>
+            &copy; 2012-<script>(function(){var t = new Date(), y = t.getFullYear();document.write(y);})()</script>
+            <a href="/">{{.SiteName}}</a>.
+            Powered by GO.
+            Website content licensed
+            <a rel="nofollow" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>.
+            &#124; <a href="https://www.bicky.me/whois/">Whois</a>.
+        </p>
+    </div>
+</footer>
+
+    {{if .SwiftypeInstallCode}}
+<script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','{{.SwiftypeInstallCode}}','2.0.0');
+</script>
+    {{end}}
+{{end}}
