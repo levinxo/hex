@@ -30,3 +30,4 @@ STATIC_PATH = {
     #'static/robots.txt': {'path': 'robots.txt'},
 }
 
+将build流程和生成流程分开~

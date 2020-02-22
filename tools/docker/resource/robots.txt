@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /url.html
+Disallow: /tools/
+
+Sitemap: https://www.bicky.me/sitemap.xml

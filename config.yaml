@@ -4,7 +4,7 @@ author: Levin
 time_location: Asia/Hong_Kong
 project_dir: .
 content_dir: ../../../blog/content
-output_dir: ../../../blog/output
+output_dir: ./tools/docker/webroot
 dev_site_url: http://localhost:8081
 publish_site_url: https://www.bicky.me/blog
 article_url : archive
