@@ -2,9 +2,10 @@ site_name: BICKY.ME
 site_lang: zh-CN
 author: Levin
 time_location: Asia/Hong_Kong
-project_dir: ~/work/go/src/hex
-content_dir: ~/work/blog/content
-output_dir: ~/work/blog/output
+project_dir: .
+content_dir: ../../../blog/content
+output_dir: ../../../blog/output
+dev_site_url: http://localhost:8081
 publish_site_url: https://www.bicky.me/blog
 article_url : archive
 theme_name : simple

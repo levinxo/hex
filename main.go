@@ -9,6 +9,7 @@ import (
 var BlogMakerInstance = NewBlogMaker()
 
 func main(){
-    fmt.Println("http://localhost:8081")
-    log.Fatal(http.ListenAndServe(":8081", http.FileServer(http.Dir(BlogMakerInstance.OutputDir))))
+    fmt.Println(BlogMakerInstance.Config.DevSiteUrl)
+    dir := BlogMakerInstance.OutputDir
+    log.Fatal(http.ListenAndServe(":8081", http.FileServer(http.Dir(dir))))
 }

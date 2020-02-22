@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"gopkg.in/russross/blackfriday.v2"
 	"gopkg.in/yaml.v2"
-	"html/template"
 	"io"
 	"io/ioutil"
 	"log"
@@ -12,6 +11,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"html/template"
 	ttemplate "text/template"
 	"time"
 )
@@ -45,6 +45,7 @@ type Config struct {
 	ProjectDir string `yaml:"project_dir"`
 	ContentDir string `yaml:"content_dir"`
 	OutputDir string `yaml:"output_dir"`
+	DevSiteUrl string `yaml:"dev_site_url"`
 	PublishSiteUrl string `yaml:"publish_site_url"`
 	ArticleUrl string `yaml:"article_url"`
 	ThemeName string `yaml:"theme_name"`
@@ -91,6 +92,7 @@ type BlogMaker struct {
 	Categories map [string] []Article
 	CurrentArticle Article
 	Meta Meta
+	Config Config
 }
 
 func NewBlogMaker() *BlogMaker {
@@ -179,6 +181,8 @@ func (b *BlogMaker) parseArticleHeader(content string) (article Article ){
 
 	for _, stringSlice := range stringSlice{
 
+		//这里注意每篇文章有多次循环
+
 		idx := strings.Index(stringSlice, ":")
 
 		rowSlice1 := strings.TrimSpace(string([]rune(stringSlice)[0:idx]))
@@ -201,6 +205,8 @@ func (b *BlogMaker) parseArticleHeader(content string) (article Article ){
 		//信息过时的文章
 		if days, _ := strconv.Atoi(article.Days); days > 100 {
 			_ = setField(&article, "OutdatedNotice", article.Days)
+		} else {
+			_ = setField(&article, "OutdatedNotice", "")
 		}
 
 		if 0 == strings.Compare("Tags", rowSlice1){
@@ -230,6 +236,7 @@ func (b *BlogMaker) init(){
 		log.Fatal(err)
 	}
 
+	b.Config = config
 	b.SiteName = config.SiteName
 	b.Author = config.Author
 	b.SiteLang = config.SiteLang
