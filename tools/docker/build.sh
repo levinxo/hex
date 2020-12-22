@@ -12,6 +12,5 @@ mv webroot/archive \
 	webroot/index.html \
 	webroot/blog/ && \
 docker build -t levinxo/website:latest . && \
-docker push levinxo/website:latest && \
-rm -rf webroot/
+docker push levinxo/website:latest
 

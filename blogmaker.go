@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gopkg.in/russross/blackfriday.v2"
+	"github.com/russross/blackfriday/v2"
 	"gopkg.in/yaml.v2"
 	"io"
 	"io/ioutil"
@@ -204,7 +204,8 @@ func (b *BlogMaker) parseArticleHeader(content string) (article Article ){
 
 		//信息过时的文章
 		if days, _ := strconv.Atoi(article.Days); days > 100 {
-			_ = setField(&article, "OutdatedNotice", article.Days)
+			//_ = setField(&article, "OutdatedNotice", article.Days)
+			_ = setField(&article, "OutdatedNotice", "")
 		} else {
 			_ = setField(&article, "OutdatedNotice", "")
 		}
